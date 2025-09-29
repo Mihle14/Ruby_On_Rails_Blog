@@ -1,0 +1,15 @@
+<h1>Blog Posts</h1>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <div>
+      <h2><%= link_to post.title, post_path(post) %></h2>
+      <p><%= truncate(post.body, length: 150) %></p>
+      <p>Author: <%= post.user ? post.user.email : "Unknown" %></p>
+      <%= link_to "Read More →", post_path(post) %>
+      <%= link_to "New Post", new_post_path %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+    </div>
+  <% end %>
+</div>
+
